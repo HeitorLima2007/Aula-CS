@@ -1,0 +1,4 @@
+/home/aluno/Área de Trabalho/Estudo C#/caixa/AppCaixa/obj/Debug/net8.0/AppCaixa.GeneratedMSBuildEditorConfig.editorconfig
+/home/aluno/Área de Trabalho/Estudo C#/caixa/AppCaixa/obj/Debug/net8.0/AppCaixa.AssemblyInfoInputs.cache
+/home/aluno/Área de Trabalho/Estudo C#/caixa/AppCaixa/obj/Debug/net8.0/AppCaixa.AssemblyInfo.cs
+/home/aluno/Área de Trabalho/Estudo C#/caixa/AppCaixa/obj/Debug/net8.0/AppCaixa.csproj.CoreCompileInputs.cache
