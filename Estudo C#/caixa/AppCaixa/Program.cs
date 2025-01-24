@@ -10,17 +10,20 @@ public string nome;
 
 public DateTime validade = new DateTime();
 
-private string[,] bancoProduto = new string[20, 4];
-
-public Produto(int c, double v, string n, DateTime va)
+private string[,] bancoProduto = new string[20, 6];
 
 public ETipoProduto TipoProduto;
+
+public Produto(int c, double v, string n, DateTime va, ETipoProduto tipoProduto)
+
+
 {
 
 codigo = c;
 valor = v;
 nome = n;
 validade = va;
+tipoProduto = TipoProduto;
 
 }
 
@@ -49,7 +52,7 @@ Console.WriteLine($"Índice :{i + 1}, Código : {bancoProduto[i, 0]}, Valor : {b
 
 }
 
-public void AdicionarProduto(int cod, double val, string nom, DateTime vad)
+public void AdicionarProduto(int cod, double val, string nom, DateTime vad, int quant, ETipoProduto tip)
 {
 
 var indece = IndiceVazio();
@@ -59,6 +62,8 @@ bancoProduto[indece, 0] = cod.ToString();
 bancoProduto[indece, 1] = val.ToString();
 bancoProduto[indece, 2] = nom;
 bancoProduto[indece, 3] = vad.ToString();
+bancoProduto[indece, 4] = quant.ToString();
+bancoProduto[indece, 5] = tip.ToString();
 
 }
 
@@ -121,6 +126,8 @@ private static void Menu()
     int pegaIndice = 0;
     double peso = 0.00;
     Console.WriteLine("Iniciar Caixa");
+    var pagamentos = new double[5];
+
 
 do
 {
@@ -201,7 +208,6 @@ break;
 //Console.WriteLine("Produto :" + produto + " Código :" + codigo + " Valor à Pagar :" + valorPagar);
 
 double valorTotal = 0.00;
-var pagamentos = new double[5];
 
 foreach (var item in pagamentos)
 {
@@ -249,8 +255,12 @@ private static void MostrarTodosProdutos()
 
 }
 
-private static void CadastrarProduto()
+private static void CadastrarProduto(int codigo, double valor, string nome, DateTime validade, int quantidade, ETipoProduto tipoProdutoEnum)
 {
+
+    var produto = new Produto();
+
+    produto.AdicionarProduto(codigo,valor,nome,validade, quantidade, tipoProdutoEnum);
 
 }
 
@@ -263,15 +273,20 @@ int codigo = 0;
 double valor = 0.00;
 string nome = "produto";
 DateTime validade = new DateTime();
-
+int quantidade = 0;
+string tipoProduto = ""; 
+ETipoProduto tipoProdutoEnum;
 for (int i = 0; i < produtos.GetLength(0); i++)
 {
 codigo = int.Parse(produtos[i,0]);
 valor = double.Parse(produtos[i,1]);
 nome = produtos[i,2];
 validade = DateTime.Parse(produtos[i,3]);
+quantidade = int.Parse(produtos[i,4]);
+tipoProduto = produtos[i,5];
+tipoProdutoEnum = (ETipoProduto)Enum.Parse(typeof(ETipoProduto), tipoProduto);
 
-produto.AdicionarProduto(codigo,valor,nome,validade);
+produto.AdicionarProduto(codigo,valor,nome,validade, quantidade, tipoProdutoEnum);
 }
 
 }
@@ -279,18 +294,21 @@ produto.AdicionarProduto(codigo,valor,nome,validade);
 
 private static string[,] Banco()
 {
-string[,] produtos = new string[10, 4]
+
+    var bemduravel = ETipoProduto.BemDuravel.ToString();
+    var perecivel = ETipoProduto.Perecivel.ToString();
+string[,] produtos = new string[10, 6]
 {
-{ "1001", "19.99", "Produto A", "2025-12-31" },
-{ "1002", "29.99", "Produto B", "2025-11-30" },
-{ "1003", "9.99", "Produto C", "2026-01-15" },
-{ "1004", "49.99", "Produto D", "2025-10-20" },
-{ "1005", "15.99", "Produto E", "2025-09-12" },
-{ "1006", "25.99", "Produto F", "2026-02-01" },
-{ "1007", "39.99", "Produto G", "2026-03-22" },
-{ "1008", "12.99", "Produto H", "2025-07-10" },
-{ "1009", "89.99", "Produto I", "2025-08-15" },
-{ "1010", "49.49", "Produto J", "2026-05-30" }
+{ "1001", "19.99", "Produto A", "2025-12-31", "18", perecivel},
+{ "1002", "29.99", "Produto B", "2025-11-30", "56", bemduravel},
+{ "1003", "9.99", "Produto C", "2026-01-15", "35", bemduravel},
+{ "1004", "49.99", "Produto D", "2025-10-20", "15", perecivel},
+{ "1005", "15.99", "Produto E", "2025-09-12", "65", perecivel},
+{ "1006", "25.99", "Produto F", "2026-02-01", "82", bemduravel},
+{ "1007", "39.99", "Produto G", "2026-03-22", "72", perecivel},
+{ "1008", "12.99", "Produto H", "2025-07-10", "10", bemduravel},
+{ "1009", "89.99", "Produto I", "2025-08-15", "29", bemduravel},
+{ "1010", "49.49", "Produto J", "2026-05-30", "82", perecivel}
 };
 return produtos;
 }
