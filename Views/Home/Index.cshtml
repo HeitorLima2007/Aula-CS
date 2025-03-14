@@ -1,0 +1,112 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+	<ul>
+			@foreach (var nome in (List<string>)ViewData["nomes"]!);
+				{
+					<li>@nome</li>
+				}
+		</ul>	
+		
+		<ul>
+			@foreach (var email in (List<string>)ViewData["emails"]!);
+				{
+					<li>@email</li>
+				}
+		</ul>
+
+		<p>Total de usuários: @ViewData["cont"]</p>
+ @* <section>
+			
+			<div id="esquerda">
+				
+				<img src="img/logo.png" alt="promoção">
+				
+			</div>
+			
+			<div id="direita">
+				
+				<p>Promoção de Hoje</p>
+				<p>Vestidos Vermelhos R$ 99.99</p>
+				
+			</div>
+			
+		</section>
+		
+    using System.Runtime.CompilerServices;
+		<section id="produtos"> 
+		
+			<div class="roupas">
+				
+				<img src="img/logo.png" alt="promoção">
+				<p>Uma linda peça para o seu guarda roupas, perfeita para uma noite inesquecível.</p>
+				<p>Vestido confeccionado em Crepe Dior.</p>
+				<a onclick="#" href="#">Comprar</a>
+			
+			</div>
+			
+			<div class="roupas">
+			
+				<img src="img/logo.png" alt="promoção">
+				<p>Versatil e Elegante, se adequa ao seu momento.</p>
+				<p> Vestido confeccionado em Viscose Twill.</p>
+				<a onclick="#" href="#">Comprar</a>
+			
+			</div>
+			
+			<div class="roupas">
+			
+				<img src="img/logo.png" alt="promoção">
+				<p>roupa 1</p>
+				<p>Esta roupa é feita de linho, ...</p>
+				<a onclick="#" href="#">Comprar</a>
+			
+			</div>		
+
+			<div class="roupas">
+			
+				<img src="img/logo.png" alt="promoção">
+				<p>roupa 1</p>
+				<p>Esta roupa é feita de linho, ...</p>
+				<a onclick="#" href="#">Comprar</a>
+			
+			</div>		
+			
+			<div class="roupas">
+			
+				<img src="img/logo.png" alt="promoção">
+				<p>roupa 1</p>
+				<p>Esta roupa é feita de linho, ...</p>
+				<a onclick="#" href="#">Comprar</a>
+				
+			</div>		
+			
+			<div class="roupas">
+			
+				<img src="img/logo.png" alt="promoção">
+				<p>roupa 1</p>
+				<p>Esta roupa é feita de linho, ...</p>
+				<a onclick="#" href="#">Comprar</a>
+			
+			</div>
+			
+			
+		</section>
+		
+		 <div id="fade" class="hide">
+			 <div id="modal_card" class="hide">
+				  <h2>Faça seu Login</h2>
+				  <label for="nome">Login:</label>
+				  <input type="text" name= "login" id="login" placeholder= "Digite seu nome">
+				  <label for="senha">Senha:</label>
+				  <input type="text" name= "senha" id="senha" placeholder= "Digite sua senha">
+				  <input type="submit"  onclick="acessLogin()" value="Entrar">
+				  <a href="#" onclick="loginModal()"> Esqueceu sua senha?</a>
+				  <a href="cadastro.html" id="Cadastre-se">Cadastre-se</a>
+				  
+				  <div id="wrongPassword">
+				  </div>
+				  
+			  </div>
+		  </div>
+		   	<script src="recursos/js/app.js"></script>	 *@
