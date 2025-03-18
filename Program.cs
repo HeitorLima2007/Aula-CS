@@ -1,4 +1,10 @@
+using TaniasAtelie.Repository;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddSingleton<DatabaseConnection>();
+
+builder.Services.AddScoped<UserRepository>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

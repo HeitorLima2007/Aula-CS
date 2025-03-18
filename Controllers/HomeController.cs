@@ -4,21 +4,23 @@ using TaniasAtelie.Models;
 using Npgsql;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using System.Data;
+using TaniasAtelie.Repository;
 
 namespace TaniasAtelie.Controllers;
+
 
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
     private readonly DatabaseConnection _dbConnection;
 
-    // private UserRepository _userRepositoriy;
+    private UserRepository _userRepository;
 
-    public HomeController (ILogger<HomeController> logger, DatabaseConnection databaseConnection)
+    public HomeController (ILogger<HomeController> logger, DatabaseConnection databaseConnection, UserRepository userRepository)
     {
         _logger = logger;
         _dbConnection = databaseConnection;
-        // _userRepository = userRepository;
+        _userRepository = userRepository;
     }
 
     public IActionResult Index()
