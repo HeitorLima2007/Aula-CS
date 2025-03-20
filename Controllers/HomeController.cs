@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using System.Data;
 using TaniasAtelie.Repository;
 
+
 namespace TaniasAtelie.Controllers;
 
 
@@ -21,6 +22,24 @@ public class HomeController : Controller
         _logger = logger;
         _dbConnection = databaseConnection;
         _userRepository = userRepository;
+    }
+
+    [HttpPost]
+    
+    public async Task<IActionResult> Register(User user, IFormFile Foto){
+
+        if(ModelState.IsValid){
+            await _userRepository.InsertUser(user, Foto);
+            return RedirectToAction("Index");
+        
+        }
+        return View(user);
+    }
+
+    public IActionResult ListUser(){
+        
+        var users = _userRepository.ListUser();
+        return View(users);
     }
 
     public IActionResult Index()
